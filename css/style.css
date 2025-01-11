@@ -1,0 +1,9 @@
+.styled-button {
+    background: none;
+    border: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    font-size: 1,4em; /* Ajusta el tamaño según lo necesites */
+  }
