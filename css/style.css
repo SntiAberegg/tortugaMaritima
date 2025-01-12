@@ -7,3 +7,8 @@
     outline: inherit;
     font-size: 1,4em; /* Ajusta el tamaño según lo necesites */
   }
+
+#ajusteStyle_Box{
+  background-color:black;
+  padding:5px;
+}
