@@ -19,28 +19,32 @@ document.addEventListener('DOMContentLoaded', function(){
 );
 
 /*
----------------------
-config carrousel cards
----------------------
+----------------------------------------
+Datos de los episodios para el carrousel
+----------------------------------------
 */
 const carouselData = [
     {
         image: "tortugaMaritima_img/Ep el vengador infantil portada.png",
         title: "El Vengador Infantil",
-        buttonText: "Ver ahora"
+        buttonText: "Ver ahora",
+        buttonActionId: "#E5T2"
     },
     {
         image: "tortugaMaritima_img/Ep Fuera de Calculo portada img.jpeg",
         title: "Fuera de Calculo",
-        buttonText: "Ver ahora"
+        buttonText: "Ver ahora",
+        buttonActionId: "#E7T1"
     },
     {
         image: "tortugaMaritima_img/Ep seguro de desempleo img portada.png",
         title: "Seguro de Desempleo",
-        buttonText: "Ver ahora"
+        buttonText: "Ver ahora",
+        buttonActionId: "#E3T1"
     }
 ];
 
+//construir en DOM
 class Carousel {
     constructor(container, data) {
         this.container = container;
@@ -76,6 +80,17 @@ class Carousel {
         // setInterval(() => this.nextSlide(), 5000);
     }
 
+
+    /*
+    .................................
+    Construir el carrousel de imgenes
+    .................................
+
+    [config para que los botones interactuen con boostrap:
+    data-bs-toggle="modal" data-bs-target="${data.buttonActionId}"]
+
+    */
+
     createSlide(data) {
         const slide = document.createElement('div');
         slide.classList.add('carousel-slide');
@@ -83,7 +98,7 @@ class Carousel {
             <img src="${data.image}" alt="${data.title}" class="carousel-image">
             <div class="carousel-content">
                 <h2 class="carousel-title">${data.title}</h2>
-                <button class="carousel-button">${data.buttonText}</button>
+                <button class="carousel-button" data-bs-toggle="modal" data-bs-target="${data.buttonActionId}">${data.buttonText}</button>
             </div>
         `;
         return slide;
@@ -101,12 +116,13 @@ class Carousel {
         slides[this.currentSlide].classList.add('active');
         indicators[this.currentSlide].classList.add('active');
     }
-
+    //AVANZAR
     nextSlide() {
         const nextIndex = (this.currentSlide + 1) % this.data.length;
         this.goToSlide(nextIndex);
     }
 
+    //RETROCEDER
     prevSlide() {
         const prevIndex = (this.currentSlide - 1 + this.data.length) % this.data.length;
         this.goToSlide(prevIndex);
