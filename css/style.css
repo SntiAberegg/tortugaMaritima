@@ -1,3 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
 .styled-button {
     background: none;
     border: none;
@@ -13,6 +23,9 @@
   padding:5px;
 }
 
+/*
+LOGOTIPO INTRO /BIENVENIDA AL INICIO
+*/
 .splash-screen {
   position: fixed;
   top: 0;
@@ -59,132 +72,213 @@
 }
 
 /*
----------------------Carrousel config
+................................
+CARROUSEL EPISODIOS DESTACADOS
+................................
 */
+
+/*separar del navbar*/
+#carrouselStyle_Box{
+margin-top: 5vh;
+background-color: black;
+padding: 0%;
+}
+
+/*BOX del carrousel*/
 .carousel-container {
-  position: relative;
-  width: 100%;
-  height: calc(100vh - 60px); /* Ajusta según la altura de tu navbar */
-  margin-top: 11vh; /* Ajusta según la altura de tu navbar */
-  overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 56.25vw; /* Relación de aspecto 16:9 */
+    max-height: calc(100vh - 60px);
+    margin-top: 60px;
+    overflow: hidden;
 }
 
 .carousel-slide {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-  display: flex;
-  align-items: flex-end;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    align-items: flex-end;
 }
 
 .carousel-slide.active {
-  opacity: 1;
+    opacity: 1;
 }
 
 .carousel-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit:fill;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-position: top;
 }
 
 .carousel-content {
-  position: relative;
-  z-index: 2;
-  color: white;
-  padding: 2rem;
-  width: 100%;
-  background: linear-gradient(transparent, rgba(0,0,0,0.8) 40%, rgba(0,0,0,1));
+    position: relative;
+    z-index: 2;
+    color: white;
+    padding: 2rem;
+    width: 100%;
+    background: linear-gradient(
+        0deg,
+        rgba(0,0,0,1) 0%,
+        rgba(0,0,0,0.8) 60%,
+        transparent 100%
+    );
 }
 
 .carousel-title {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    margin-bottom: clamp(0.5rem, 2vw, 1rem);
+    font-weight: 700;
+    line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .carousel-button {
-  padding: 0.8rem 2rem;
-  font-size: 1.2rem;
-  background-color: rgba(255,255,255,0.9);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+    padding: clamp(0.5rem, 2vw, 0.8rem) clamp(1rem, 3vw, 2rem);
+    font-size: clamp(0.875rem, 1.5vw, 1.2rem);
+    background-color: rgba(255,255,255,0.9);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
 }
 
 .carousel-button:hover {
-  background-color: white;
+    background-color: white;
+    transform: scale(1.05);
 }
 
 .carousel-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 2rem;
-  z-index: 3;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 4%;
+    z-index: 3;
 }
 
 .nav-button {
-  background-color: rgba(0,0,0,0.5);
-  color: white;
-  border: none;
-  padding: 1rem;
-  cursor: pointer;
-  border-radius: 50%;
-  transition: background-color 0.3s;
+    width: clamp(30px, 5vw, 50px);
+    height: clamp(30px, 5vw, 50px);
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1rem, 2vw, 1.5rem);
 }
 
 .nav-button:hover {
-  background-color: rgba(0,0,0,0.8);
+    background-color: rgba(0,0,0,0.8);
+    transform: scale(1.1);
 }
 
-/* Estilos para celulares */
-@media (max-width: 768px) {
-  .carousel-title {
-      font-size: 2rem;
-  }
-
-  .carousel-button {
-      padding: 0.6rem 1.5rem;
-      font-size: 1rem;
-  }
-
-  .carousel-nav {
-      padding: 0 1rem;
-  }
-
-  .nav-button {
-      padding: 0.8rem;
-  }
-}
-
-/* Indicadores de slide */
 .carousel-indicators {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  z-index: 3;
+    position: absolute;
+    bottom: clamp(10px, 3vh, 20px);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: clamp(5px, 1vw, 10px);
+    z-index: 3;
 }
 
 .indicator {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: rgba(255,255,255,0.5);
-  cursor: pointer;
-  transition: background-color 0.3s;
+    width: clamp(6px, 1.5vw, 10px);
+    height: clamp(6px, 1.5vw, 10px);
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .indicator.active {
-  background-color: white;
+    background-color: white;
+    transform: scale(1.2);
+}
+
+/* Breakpoints para mejorar aspecto*/
+@media only screen and (max-width: 1399px) {
+    .carousel-container {
+        height: 60vw;
+    }
+}
+
+@media only screen and (max-width: 1099px) {
+    .carousel-container {
+        height: 65vw;
+    }
+}
+
+@media only screen and (max-width: 799px) {
+    .carousel-container {
+        height: 75vw;
+        margin-top: 50px; /* Navbar más pequeño en móvil */
+    }
+
+    .carousel-content {
+        padding: 1.5rem 1rem;
+    }
+
+    .nav-button {
+        opacity: 0.7;
+    }
+}
+
+@media only screen and (max-width: 499px) {
+    .carousel-container {
+        height: 85vw;
+    }
+
+    .carousel-content {
+        padding: 1rem;
+    }
+
+    .carousel-title {
+        max-width: 80%;
+    }
+
+    .nav-button {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+    .carousel-indicators {
+        bottom: 5px;
+    }
+}
+
+/* Orientación landscape en móviles */
+@media only screen and (max-height: 500px) and (orientation: landscape) {
+    .carousel-container {
+        height: 100vh;
+        margin-top: 40px;
+    }
+
+    .carousel-content {
+        padding: 1rem;
+    }
+
+    .carousel-title {
+        font-size: clamp(1rem, 4vw, 2rem);
+    }
+
+    .carousel-button {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
 }
