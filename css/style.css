@@ -18,9 +18,29 @@ body {
     font-size: 1,4em; /* Ajusta el tamaño según lo necesites */
   }
 
+
 #ajusteStyle_Box{
   background-color:black;
   padding:5px;
+}
+
+.episodioStyle_Box{
+    position:relative;
+    padding-bottom:56.25%; /*relacion de aspecto 16.9*/
+    height:0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+    margin: 0 auto; /*centrar el div*/
+}
+
+.episodioStyle_Box iframe{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height:100%;
+    border: 0;
 }
 
 /*
